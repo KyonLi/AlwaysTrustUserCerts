@@ -15,14 +15,12 @@ collect_user_certs(){
 
     log "Grabbing user certs"
     # Add the user-defined certs, looping over all available users
-    for dir in /data/misc/user/*; do
-        if [ -d "$dir/cacerts-added" ]; then
-            for cert in "$dir/cacerts-added"/*; do
-                cp "$cert" $MODDIR$SYS_CERT_DIR/
-                log "Grabbing user cert: $(basename "$cert")"
-            done
-        fi
-    done
+    if [ -d "/data/adb/cacerts" ]; then
+        for cert in "/data/adb/cacerts"/*; do
+            cp "$cert" $MODDIR$SYS_CERT_DIR/
+            log "Grabbing user cert: $(basename "$cert")"
+        done
+    fi
 }
 
 main(){

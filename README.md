@@ -15,11 +15,11 @@ More background information can be found [in this blogpost](https://blog.nviso.e
 
 ### Installing certificates
 
-Install the certificate as a user certificate and restart the device.
+Copy the certificate to /data/adb/cacerts and restart the device.
 
 ### Removing certificates
 
-Remove the certificate from the user store through the settings and restart the device.
+Remove the certificate from /data/adb/cacerts and restart the device.
 
 ## Changelog
 
