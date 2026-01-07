@@ -15,7 +15,19 @@ More background information can be found [in this blogpost](https://blog.nviso.e
 
 ### Installing certificates
 
-Copy the certificate to /data/adb/cacerts and restart the device.
+1. Convert the certificate to DER format.
+
+```shell
+openssl x509 -in ca.pem -out ca.crt -outform DER
+```
+
+2. Rename the certificate file.
+
+```shell
+mv ca.crt $(openssl x509 -inform DER -in ca.crt -subject_hash_old -noout).0
+```
+
+3. Copy the renamed certificate to /data/adb/cacerts and restart the device.
 
 ### Removing certificates
 
